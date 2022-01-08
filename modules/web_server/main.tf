@@ -12,11 +12,6 @@ resource "heroku_app" "app" {
 
 }
 
-resource "heroku_addon" "postgres" {
-  app  = heroku_app.app.id
-  plan = "heroku-postgresql:hobby-dev"
-}
-
 resource "heroku_app_feature" "runtime_dyno_metadata" {
   app  = heroku_app.app.id
   name = "runtime-dyno-metadata"
