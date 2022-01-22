@@ -4,6 +4,7 @@
 Template/example of IaC for heroku stack: 
 - web server: Python+Nginx
 - addons: Postgres
+- logger: [Datadog](https://docs.datadoghq.com/agent/basic_agent_usage/heroku/)
 
 for staging/production environments.
 
@@ -28,9 +29,12 @@ Google Cloud Storage is used for storing the state of infrastructure - hence, Go
 |HEROKU_EMAIL| Email of heroku account |
 |HEROKU_API_KEY| Heroku api key |
 |HEROKU_APP_NAME| Heroku app name. It used in webserver module. May not be specified if name is set manually|
-
+| DD_API_KEY | Datadog api key |
 - copy `.env.example` to `.env`
 - fill `.env` with real values
 - run `source .env` to set env variables within bash/console session
 
-_Note: there is `django_settings_module` variable for web_server, adjust it for your project._
+---
+Note: there are some variables in the web_server module that may need to be adjusted:
+ - `django_settings_module` - path to django settings in your project.
+ -  `datadog_site` - datadog domain/site where you have signed up. See more [there](https://docs.datadoghq.com/getting_started/site/)
